@@ -1,0 +1,24 @@
+package com.klefmusic.flux.service
+
+import io.reactivex.rxjava3.core.Single
+import java.util.concurrent.TimeUnit
+
+/**
+ * Represents basic calls to the server i.e a Retrofit service.
+ */
+class Server {
+
+    /**
+     * Mock call that loads a user
+     */
+    fun loadUser(userId: String): Single<User> {
+        return Single.just(User(id = userId, name = "Rory")).delay(3, TimeUnit.SECONDS)
+    }
+
+    fun login(email: String, password: String): Single<User> {
+        return Single.just(User(id = "userId", name = "Rory")).delay(3, TimeUnit.SECONDS)
+    }
+
+}
+
+data class User(val id: String, val name: String)

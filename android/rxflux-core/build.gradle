@@ -1,0 +1,44 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    def rxJavaVersion = '3.0.6'
+    def rxKotlinVersion = '3.0.1'
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "io.reactivex.rxjava3:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.jakewharton.rxrelay3:rxrelay:3.0.0'
+    implementation 'com.jakewharton.rx3:replaying-share:3.0.0'
+    implementation 'com.jakewharton.rx3:replaying-share-kotlin:3.0.0'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+buildscript {
+    ext.kotlin_version = '1.4.10'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+repositories {
+    mavenCentral()
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
